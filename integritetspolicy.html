@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integritetspolicy | Belle Martineé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f2;
+      --blush: #e8c9b8;
+      --rose:  #c4796a;
+      --deep:  #2b1f1a;
+      --mid:   #7a5c54;
+      --gold:  #c9a96e;
+      --white: #ffffff;
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--deep);
+      line-height: 1.8;
+    }
+
+    a { color: var(--rose); text-decoration: underline; }
+    a:hover { color: var(--gold); }
+
+    /* Navigation */
+    .nav {
+      background: rgba(250,247,242,.97);
+      border-bottom: 1px solid rgba(43,31,26,.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: .06em;
+      color: var(--deep);
+      text-decoration: none;
+    }
+    .nav__logo span { color: var(--rose); font-style: italic; }
+    .nav__back {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav__back:hover { color: var(--rose); }
+
+    /* Hero */
+    .page-hero {
+      background: var(--deep);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .page-hero__eyebrow {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .page-hero__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .page-hero__sub {
+      color: rgba(255,255,255,.6);
+      font-size: .85rem;
+    }
+
+    /* Content */
+    .policy-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 24px 100px;
+    }
+
+    .policy-wrap h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--deep);
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(43,31,26,.1);
+    }
+
+    .policy-wrap h3 {
+      font-family: 'Jost', sans-serif;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin: 28px 0 10px;
+    }
+
+    .policy-wrap p {
+      font-size: .93rem;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .policy-wrap ul {
+      list-style: none;
+      margin-bottom: 16px;
+      padding-left: 0;
+    }
+    .policy-wrap ul li {
+      font-size: .93rem;
+      color: var(--mid);
+      padding: 6px 0 6px 22px;
+      position: relative;
+    }
+    .policy-wrap ul li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: .6rem;
+      top: 10px;
+    }
+
+    .policy-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: .88rem;
+    }
+    .policy-wrap table th {
+      background: var(--deep);
+      color: var(--white);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 500;
+      letter-spacing: .05em;
+    }
+    .policy-wrap table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(43,31,26,.08);
+      color: var(--mid);
+      vertical-align: top;
+    }
+    .policy-wrap table tr:nth-child(even) td { background: rgba(43,31,26,.03); }
+
+    .info-box {
+      background: rgba(201,169,110,.1);
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 24px;
+    }
+    .info-box p { color: var(--deep); margin-bottom: 0; font-size: .88rem; }
+
+    .updated {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--deep);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    /* Footer */
+    .page-footer {
+      background: #1a1210;
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: .78rem;
+    }
+    .page-footer a { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Belle Martineé<span>.</span></a>
+      <a href="index.html" class="nav__back">← Tillbaka till butiken</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="page-hero__eyebrow">Juridisk information</p>
+    <h1 class="page-hero__title">Integritetspolicy</h1>
+    <p class="page-hero__sub">Senast uppdaterad: 3 april 2026</p>
+  </div>
+
+  <div class="policy-wrap">
+    <span class="updated">Gäller från 3 april 2026</span>
+
+    <div class="info-box">
+      <p>Din integritet är viktig för oss. Den här policyn förklarar vilka personuppgifter vi samlar in, varför vi gör det och dina rättigheter enligt GDPR och svensk dataskyddslagstiftning.</p>
+    </div>
+
+    <h2>1. Personuppgiftsansvarig</h2>
+    <p>Belle Martineé AB (org. nr. 556XXX-XXXX) är personuppgiftsansvarig för behandlingen av dina personuppgifter.</p>
+    <ul>
+      <li><strong>Adress:</strong> Storgatan 1, 111 23 Stockholm, Sverige</li>
+      <li><strong>E-post:</strong> integritet@bellemartinee.se</li>
+      <li><strong>Telefon:</strong> 08-XXX XX XX</li>
+    </ul>
+
+    <h2>2. Vilka uppgifter samlar vi in?</h2>
+    <p>Vi samlar in personuppgifter som du lämnar till oss direkt eller som genereras när du använder vår webbplats.</p>
+
+    <h3>Uppgifter du lämnar till oss</h3>
+    <ul>
+      <li>Namn och kontaktuppgifter (e-postadress, telefonnummer, adress)</li>
+      <li>Betalningsuppgifter (hanteras krypterat via Klarna / Stripe)</li>
+      <li>Kontouppgifter (lösenord lagras hashat och aldrig i klartext)</li>
+      <li>Kommunikation med kundservice</li>
+      <li>Prenumeration på nyhetsbrev</li>
+    </ul>
+
+    <h3>Uppgifter som samlas in automatiskt</h3>
+    <ul>
+      <li>IP-adress och ungefärlig geografisk position</li>
+      <li>Webbläsartyp och operativsystem</li>
+      <li>Besökta sidor, klick och tidsåtgång (via cookies – se cookiepolicy)</li>
+      <li>Enhetsinformation</li>
+    </ul>
+
+    <h2>3. Ändamål och laglig grund för behandlingen</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Ändamål</th>
+          <th>Laglig grund</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hantera beställningar och leveranser</td>
+          <td>Fullgöra avtal (Art. 6.1 b GDPR)</td>
+        </tr>
+        <tr>
+          <td>Kundservice och reklamationer</td>
+          <td>Fullgöra avtal / Berättigat intresse</td>
+        </tr>
+        <tr>
+          <td>Nyhetsbrev och marknadsföring</td>
+          <td>Samtycke (Art. 6.1 a GDPR)</td>
+        </tr>
+        <tr>
+          <td>Förbättra webbplatsen och användarupplevelsen</td>
+          <td>Berättigat intresse (Art. 6.1 f GDPR)</td>
+        </tr>
+        <tr>
+          <td>Bokföring och skatteändamål</td>
+          <td>Rättslig förpliktelse (Art. 6.1 c GDPR)</td>
+        </tr>
+        <tr>
+          <td>Förebygga bedrägeri och säkerställa säkerhet</td>
+          <td>Berättigat intresse</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. Hur länge sparar vi dina uppgifter?</h2>
+    <ul>
+      <li><strong>Kundkonto:</strong> Så länge kontot är aktivt, plus 12 månader efter begärd radering.</li>
+      <li><strong>Orderhistorik:</strong> 7 år enligt bokföringslagen.</li>
+      <li><strong>Marknadsföring (samtycke):</strong> Till dess du avregistrerar dig.</li>
+      <li><strong>Kundservice-kommunikation:</strong> 2 år.</li>
+      <li><strong>Analysdata (anonymiserad):</strong> 26 månader.</li>
+    </ul>
+
+    <h2>5. Delning av personuppgifter</h2>
+    <p>Vi delar aldrig dina uppgifter med tredje part för deras egna marknadsföringsändamål. Vi kan dela uppgifter med:</p>
+    <ul>
+      <li><strong>Leveranspartners</strong> (PostNord, DHL, Schenker) – namn och leveransadress</li>
+      <li><strong>Betaltjänstleverantörer</strong> (Klarna, Stripe) – betalningsuppgifter</li>
+      <li><strong>Analysverktyg</strong> (Google Analytics med anonymiserad IP)</li>
+      <li><strong>E-postmarknadsföring</strong> (Mailchimp) – vid samtycke till nyhetsbrev</li>
+      <li><strong>Myndigheter</strong> – om det krävs enligt lag</li>
+    </ul>
+    <p>Alla tredjepartsleverantörer är bundna av databehandlingsavtal (DPA) och får enbart behandla uppgifter på våra instruktioner.</p>
+
+    <h2>6. Dina rättigheter</h2>
+    <p>Enligt GDPR har du följande rättigheter:</p>
+    <ul>
+      <li><strong>Tillgång (Art. 15):</strong> Begär en kopia av de uppgifter vi har om dig.</li>
+      <li><strong>Rättelse (Art. 16):</strong> Korrigera felaktiga eller ofullständiga uppgifter.</li>
+      <li><strong>Radering (Art. 17):</strong> Begär att vi raderar dina uppgifter ("rätten att bli glömd").</li>
+      <li><strong>Begränsning (Art. 18):</strong> Begär att vi begränsar behandlingen i vissa fall.</li>
+      <li><strong>Dataportabilitet (Art. 20):</strong> Hämta dina uppgifter i maskinläsbart format.</li>
+      <li><strong>Invändning (Art. 21):</strong> Invända mot behandling baserad på berättigat intresse.</li>
+      <li><strong>Återkalla samtycke:</strong> När som helst, utan att det påverkar behandling som skett dessförinnan.</li>
+    </ul>
+    <p>Kontakta oss på <a href="mailto:integritet@bellemartinee.se">integritet@bellemartinee.se</a> för att utöva dina rättigheter. Vi svarar inom 30 dagar.</p>
+
+    <h2>7. Klagomål</h2>
+    <p>Om du anser att vi behandlar dina personuppgifter felaktigt kan du lämna klagomål till <strong>Integritetsskyddsmyndigheten (IMY)</strong>:</p>
+    <ul>
+      <li>Webbplats: <a href="https://www.imy.se" target="_blank" rel="noopener noreferrer">www.imy.se</a></li>
+      <li>E-post: imy@imy.se</li>
+      <li>Telefon: 08-657 61 00</li>
+    </ul>
+
+    <h2>8. Säkerhet</h2>
+    <p>Vi vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda dina personuppgifter mot obehörig åtkomst, förlust eller förstörelse. All dataöverföring sker via krypterade HTTPS-anslutningar. Betalkortsuppgifter lagras aldrig på våra servrar.</p>
+
+    <h2>9. Ändringar av denna policy</h2>
+    <p>Vi kan uppdatera denna integritetspolicy när det behövs. Vid väsentliga ändringar informerar vi dig via e-post eller ett tydligt meddelande på webbplatsen. Aktuellt datum för senaste ändring anges alltid överst på sidan.</p>
+
+    <h2>10. Kontakt</h2>
+    <p>Har du frågor om hur vi behandlar dina personuppgifter? Kontakta oss gärna:</p>
+    <ul>
+      <li>E-post: <a href="mailto:integritet@bellemartinee.se">integritet@bellemartinee.se</a></li>
+      <li>Post: Belle Martineé AB, Dataskyddsombud, Storgatan 1, 111 23 Stockholm</li>
+    </ul>
+  </div>
+
+  <footer class="page-footer">
+    <p>© 2026 Belle Martineé. Alla rättigheter förbehållna. &nbsp;|&nbsp;
+      <a href="cookiepolicy.html">Cookiepolicy</a> &nbsp;|&nbsp;
+      <a href="index.html">Tillbaka till butiken</a>
+    </p>
+  </footer>
+
+</body>
+</html>
