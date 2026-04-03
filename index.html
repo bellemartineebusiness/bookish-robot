@@ -754,6 +754,74 @@
     .cookie-btn--accept:hover { background: #d4b87a; }
     .cookie-btn--decline { background: transparent; color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.25); }
     .cookie-btn--decline:hover { border-color: rgba(255,255,255,.6); color: var(--white); }
+    .cookie-btn--settings { background: transparent; color: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.15); }
+    .cookie-btn--settings:hover { color: var(--white); border-color: rgba(255,255,255,.45); }
+    .cookie-btn--save { background: var(--rose); color: var(--white); border: none; }
+    .cookie-btn--save:hover { background: #d4856e; }
+
+    .cookie-banner__main { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; width: 100%; }
+
+    .cookie-banner__settings {
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 16px;
+      margin-top: 4px;
+    }
+    .cookie-banner__settings[hidden] { display: none; }
+
+    .cookie-toggles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .cookie-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+    }
+    .cookie-toggle__info { display: flex; flex-direction: column; gap: 2px; }
+    .cookie-toggle__name { font-size: .82rem; font-weight: 500; color: var(--white); }
+    .cookie-toggle__desc { font-size: .7rem; color: rgba(255,255,255,.45); }
+    .cookie-toggle__always { font-size: .68rem; color: var(--gold); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+
+    .toggle-switch { position: relative; display: inline-flex; width: 40px; height: 22px; cursor: pointer; flex-shrink: 0; }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; inset: 0; background: rgba(255,255,255,.2); border-radius: 22px; transition: .2s; }
+    .toggle-slider::before { content: ''; position: absolute; width: 16px; height: 16px; left: 3px; bottom: 3px; background: var(--white); border-radius: 50%; transition: .2s; }
+    .toggle-switch input:checked + .toggle-slider { background: var(--gold); }
+    .toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); }
+
+    /* ── Newsletter GDPR consent ─────────────────────────────────── */
+    .newsletter__form { flex-direction: column; align-items: stretch; }
+    .newsletter__row { display: flex; gap: 0; }
+    .newsletter__row .newsletter__input { border-radius: var(--radius) 0 0 var(--radius); }
+    .newsletter__row .btn { border-radius: 0 var(--radius) var(--radius) 0; }
+
+    .gdpr-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 480px;
+      margin: 10px auto 0;
+      cursor: pointer;
+      font-size: .76rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.5;
+    }
+    .gdpr-consent input[type="checkbox"] { flex-shrink: 0; margin-top: 2px; accent-color: var(--gold); cursor: pointer; }
+    .gdpr-consent a { color: var(--gold); text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .newsletter__row { flex-direction: column; }
+      .newsletter__row .newsletter__input,
+      .newsletter__row .btn { border-radius: var(--radius); }
+    }
   </style>
 </head>
 <body>
@@ -1035,8 +1103,14 @@
       <h2 class="section-title">Prenumerera på vårt nyhetsbrev</h2>
       <p class="newsletter__sub">Få exklusiva erbjudanden, nyheter och stilinspiration direkt i din inkorg. Vi lovar att inte skicka skräppost.</p>
       <form class="newsletter__form" onsubmit="handleNewsletter(event)">
-        <input class="newsletter__input" type="email" placeholder="Din e-postadress" required aria-label="E-postadress" />
-        <button type="submit" class="btn btn-primary">Prenumerera</button>
+        <div class="newsletter__row">
+          <input class="newsletter__input" type="email" placeholder="Din e-postadress" required aria-label="E-postadress" />
+          <button type="submit" class="btn btn-primary">Prenumerera</button>
+        </div>
+        <label class="gdpr-consent">
+          <input type="checkbox" required />
+          <span>Jag samtycker till att Belle Martineé behandlar min e-postadress för nyhetsbrev i enlighet med <a href="integritetspolicy.html">integritetspolicyn</a> (Art.&nbsp;6.1&nbsp;a GDPR). Jag kan avregistrera mig när som helst.</span>
+        </label>
       </form>
     </div>
   </section>
@@ -1087,6 +1161,7 @@
             <li><a href="#">Press</a></li>
             <li><a href="#">Karriär</a></li>
             <li><a href="#">Affiliate</a></li>
+            <li><a href="gdpr.html">GDPR &amp; Dina rättigheter</a></li>
           </ul>
         </div>
 
@@ -1097,51 +1172,125 @@
         <div class="footer__bottom-links">
           <a href="integritetspolicy.html">Integritetspolicy</a>
           <a href="cookiepolicy.html">Cookiepolicy</a>
+          <a href="gdpr.html">GDPR</a>
           <a href="#">Allmänna villkor</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Cookie consent banner -->
+  <!-- Cookie consent banner (GDPR granular) -->
   <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookiemeddelande">
-    <p class="cookie-banner__text">
-      <strong>Vi använder cookies</strong> för att förbättra din upplevelse, analysera trafik och visa relevant innehåll.
-      Genom att klicka "Acceptera" samtycker du till vår
-      <a href="cookiepolicy.html">cookiepolicy</a> och
-      <a href="integritetspolicy.html">integritetspolicy</a>.
-    </p>
-    <div class="cookie-banner__actions">
-      <button class="cookie-btn cookie-btn--accept" onclick="setCookieConsent('accepted')">Acceptera alla</button>
-      <button class="cookie-btn cookie-btn--decline" onclick="setCookieConsent('declined')">Endast nödvändiga</button>
+    <div class="cookie-banner__main">
+      <p class="cookie-banner__text">
+        <strong>Vi använder cookies</strong> – nödvändiga för att webbplatsen ska fungera, och valfria för analys och marknadsföring.
+        Läs vår <a href="cookiepolicy.html">cookiepolicy</a> och <a href="integritetspolicy.html">integritetspolicy</a>.
+      </p>
+      <div class="cookie-banner__actions">
+        <button class="cookie-btn cookie-btn--accept" onclick="setCookieConsent('all')">Acceptera alla</button>
+        <button class="cookie-btn cookie-btn--decline" onclick="setCookieConsent('necessary')">Endast nödvändiga</button>
+        <button class="cookie-btn cookie-btn--settings" id="cookieSettingsBtn" onclick="toggleCookieSettings()">Anpassa ▾</button>
+      </div>
+    </div>
+    <div class="cookie-banner__settings" id="cookieSettings" hidden>
+      <div class="cookie-toggles">
+        <div class="cookie-toggle">
+          <div class="cookie-toggle__info">
+            <span class="cookie-toggle__name">Nödvändiga</span>
+            <span class="cookie-toggle__desc">Varukorg, session, samtycke</span>
+          </div>
+          <span class="cookie-toggle__always">Alltid aktiva</span>
+        </div>
+        <div class="cookie-toggle">
+          <div class="cookie-toggle__info">
+            <span class="cookie-toggle__name">Analytik</span>
+            <span class="cookie-toggle__desc">Google Analytics (anonym)</span>
+          </div>
+          <label class="toggle-switch" aria-label="Analytik-cookies">
+            <input type="checkbox" id="toggleAnalytics" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="cookie-toggle">
+          <div class="cookie-toggle__info">
+            <span class="cookie-toggle__name">Marknadsföring</span>
+            <span class="cookie-toggle__desc">Meta Pixel, Google Ads</span>
+          </div>
+          <label class="toggle-switch" aria-label="Marknadsföringscookies">
+            <input type="checkbox" id="toggleMarketing" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="cookie-toggle">
+          <div class="cookie-toggle__info">
+            <span class="cookie-toggle__name">Funktionella</span>
+            <span class="cookie-toggle__desc">Önskelista, preferenser</span>
+          </div>
+          <label class="toggle-switch" aria-label="Funktionella cookies">
+            <input type="checkbox" id="toggleFunctional" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <button class="cookie-btn cookie-btn--save" onclick="saveCookiePreferences()">Spara mina val</button>
     </div>
   </div>
 
   <script>
     function handleNewsletter(e) {
       e.preventDefault();
-      const input = e.target.querySelector('input');
-      const btn   = e.target.querySelector('button');
-      btn.textContent  = 'Tack! ✓';
+      const emailInput = e.target.querySelector('input[type="email"]');
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Tack! ✓';
       btn.style.background = '#c9a96e';
-      input.value = '';
+      emailInput.value = '';
+      e.target.querySelector('input[type="checkbox"]').checked = false;
       setTimeout(() => {
         btn.textContent = 'Prenumerera';
         btn.style.background = '';
       }, 3000);
     }
 
-    // Cookie consent
+    // Cookie consent – granular
     (function () {
-      const consent = localStorage.getItem('bm_cookie_consent');
-      if (consent) {
-        document.getElementById('cookieBanner').classList.add('hidden');
-      }
+      try {
+        const stored = localStorage.getItem('bm_cookie_consent');
+        if (stored) {
+          document.getElementById('cookieBanner').classList.add('hidden');
+        }
+      } catch (e) {}
     })();
 
-    function setCookieConsent(value) {
-      localStorage.setItem('bm_cookie_consent', value);
+    function setCookieConsent(level) {
+      const data = {
+        level: level,
+        analytics: level === 'all',
+        marketing: level === 'all',
+        functional: level === 'all',
+        date: new Date().toISOString()
+      };
+      try { localStorage.setItem('bm_cookie_consent', JSON.stringify(data)); } catch (e) {}
       document.getElementById('cookieBanner').classList.add('hidden');
+    }
+
+    function saveCookiePreferences() {
+      const data = {
+        level: 'custom',
+        analytics: document.getElementById('toggleAnalytics').checked,
+        marketing: document.getElementById('toggleMarketing').checked,
+        functional: document.getElementById('toggleFunctional').checked,
+        date: new Date().toISOString()
+      };
+      try { localStorage.setItem('bm_cookie_consent', JSON.stringify(data)); } catch (e) {}
+      document.getElementById('cookieBanner').classList.add('hidden');
+    }
+
+    function toggleCookieSettings() {
+      const panel = document.getElementById('cookieSettings');
+      const btn   = document.getElementById('cookieSettingsBtn');
+      const open  = panel.hasAttribute('hidden');
+      if (open) { panel.removeAttribute('hidden'); btn.textContent = 'Stäng ▴'; }
+      else       { panel.setAttribute('hidden', ''); btn.textContent = 'Anpassa ▾'; }
     }
   </script>
 

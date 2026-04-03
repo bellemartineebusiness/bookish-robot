@@ -429,12 +429,12 @@
 
     <div class="consent-controls" id="consentControls">
       <div>
-        <p><strong>Ditt nuvarande val:</strong> Ändra dina cookie-inställningar här.</p>
-        <p class="consent-status" id="consentStatus"></p>
+        <p><strong>Ditt nuvarande val:</strong></p>
+        <p class="consent-status" id="consentStatus">Läser in…</p>
       </div>
       <div class="consent-btns">
-        <button class="cbtn cbtn--accept" onclick="updateConsent('accepted')">Acceptera alla</button>
-        <button class="cbtn cbtn--decline" onclick="updateConsent('declined')">Endast nödvändiga</button>
+        <button class="cbtn cbtn--accept" onclick="updateConsent('all')">Acceptera alla</button>
+        <button class="cbtn cbtn--decline" onclick="updateConsent('necessary')">Endast nödvändiga</button>
       </div>
     </div>
 
@@ -469,29 +469,44 @@
   <footer class="page-footer">
     <p>© 2026 Belle Martineé. Alla rättigheter förbehållna. &nbsp;|&nbsp;
       <a href="integritetspolicy.html">Integritetspolicy</a> &nbsp;|&nbsp;
+      <a href="gdpr.html">GDPR &amp; Dina rättigheter</a> &nbsp;|&nbsp;
       <a href="index.html">Tillbaka till butiken</a>
     </p>
   </footer>
 
   <script>
-    (function () {
-      const consent = localStorage.getItem('bm_cookie_consent');
-      const el = document.getElementById('consentStatus');
-      if (el) {
-        if (consent === 'accepted') el.textContent = 'Nuvarande val: Acceptera alla ✓';
-        else if (consent === 'declined') el.textContent = 'Nuvarande val: Endast nödvändiga ✓';
-        else el.textContent = 'Inget val sparat ännu';
+    function describeConsent(data) {
+      if (!data) return 'Inget val sparat ännu';
+      try {
+        const d = JSON.parse(data);
+        if (d.level === 'all') return 'Nuvarande val: Acceptera alla ✓';
+        if (d.level === 'necessary') return 'Nuvarande val: Endast nödvändiga ✓';
+        const parts = ['Nödvändiga'];
+        if (d.analytics)  parts.push('Analytik');
+        if (d.marketing)  parts.push('Marknadsföring');
+        if (d.functional) parts.push('Funktionella');
+        return 'Nuvarande val: ' + parts.join(', ') + ' ✓';
+      } catch (e) {
+        return 'Inget val sparat ännu';
       }
+    }
+
+    (function () {
+      const el = document.getElementById('consentStatus');
+      if (el) el.textContent = describeConsent(localStorage.getItem('bm_cookie_consent'));
     })();
 
-    function updateConsent(value) {
-      localStorage.setItem('bm_cookie_consent', value);
+    function updateConsent(level) {
+      const data = {
+        level: level,
+        analytics: level === 'all',
+        marketing: level === 'all',
+        functional: level === 'all',
+        date: new Date().toISOString()
+      };
+      try { localStorage.setItem('bm_cookie_consent', JSON.stringify(data)); } catch (e) {}
       const el = document.getElementById('consentStatus');
-      if (el) {
-        el.textContent = value === 'accepted'
-          ? 'Nuvarande val: Acceptera alla ✓'
-          : 'Nuvarande val: Endast nödvändiga ✓';
-      }
+      if (el) el.textContent = describeConsent(JSON.stringify(data));
     }
   </script>
 
