@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belle Martineé | Exklusiv E-handel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #faf7f2;
+      --blush:   #e8c9b8;
+      --rose:    #c4796a;
+      --deep:    #2b1f1a;
+      --mid:     #7a5c54;
+      --gold:    #c9a96e;
+      --white:   #ffffff;
+      --radius:  4px;
+      --shadow:  0 4px 24px rgba(43,31,26,.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--deep);
+      line-height: 1.7;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utilities ──────────────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--deep);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 36px;
+      font-family: 'Jost', sans-serif;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: all .25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--deep);
+      color: var(--white);
+      border: 1px solid var(--deep);
+    }
+    .btn-primary:hover { background: var(--rose); border-color: var(--rose); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--deep);
+      border: 1px solid var(--deep);
+    }
+    .btn-outline:hover { background: var(--deep); color: var(--white); }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--deep);
+      border: 1px solid var(--white);
+    }
+    .btn-light:hover { background: transparent; color: var(--white); }
+
+    /* ── Top bar ────────────────────────────────────────────────── */
+    .topbar {
+      background: var(--deep);
+      color: var(--blush);
+      text-align: center;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 8px 0;
+    }
+
+    /* ── Navigation ─────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,247,242,.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(43,31,26,.08);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav__logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: .06em;
+      color: var(--deep);
+    }
+    .nav__logo span { color: var(--rose); font-style: italic; }
+
+    .nav__links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color .2s;
+    }
+    .nav__links a:hover { color: var(--rose); }
+
+    .nav__actions { display: flex; align-items: center; gap: 20px; }
+
+    .nav__icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--deep);
+      display: flex;
+      align-items: center;
+      transition: color .2s;
+    }
+    .nav__icon-btn:hover { color: var(--rose); }
+
+    .cart-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      background: var(--rose);
+      color: var(--white);
+      font-size: .65rem;
+      border-radius: 50%;
+      margin-left: 4px;
+    }
+
+    /* ── Hero ───────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--deep);
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(43,31,26,.85) 0%, rgba(196,121,106,.35) 100%),
+        url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;
+    }
+
+    .hero__content {
+      position: relative;
+      max-width: 640px;
+      padding: 80px 24px;
+    }
+
+    .hero__eyebrow {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .hero__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero__title em { font-style: italic; color: var(--blush); }
+
+    .hero__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.75);
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+
+    .hero__cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* ── Marquee ────────────────────────────────────────────────── */
+    .marquee-wrap {
+      background: var(--gold);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--deep);
+      margin: 0 32px;
+    }
+
+    .marquee-track span::before {
+      content: '✦';
+      margin-right: 32px;
+      opacity: .6;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Categories ─────────────────────────────────────────────── */
+    .categories { padding: 100px 0; }
+
+    .categories__header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .categories__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cat-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+
+    .cat-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(43,31,26,.7) 0%, transparent 55%);
+      transition: opacity .3s;
+    }
+
+    .cat-card:hover::after { opacity: .9; }
+
+    .cat-card img {
+      height: 100%;
+      transition: transform .55s ease;
+    }
+    .cat-card:hover img { transform: scale(1.06); }
+
+    .cat-card__body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 28px 24px;
+      color: var(--white);
+    }
+
+    .cat-card__label {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .cat-card__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    /* ── Featured products ──────────────────────────────────────── */
+    .featured { padding: 80px 0 100px; background: var(--white); }
+
+    .featured__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .products__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      position: relative;
+    }
+
+    .product-card__img-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      aspect-ratio: 3/4;
+      background: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .product-card__img-wrap img {
+      height: 100%;
+      transition: transform .5s ease;
+    }
+    .product-card:hover .product-card__img-wrap img { transform: scale(1.05); }
+
+    .product-card__badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--rose);
+      color: var(--white);
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .product-card__wish {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--white);
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+      transition: background .2s;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .product-card:hover .product-card__wish { opacity: 1; }
+    .product-card__wish:hover { background: var(--blush); }
+
+    .product-card__quick {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all .3s;
+    }
+    .product-card:hover .product-card__quick { opacity: 1; transform: translateY(0); }
+
+    .product-card__quick .btn {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: .72rem;
+    }
+
+    .product-card__brand {
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 4px;
+    }
+
+    .product-card__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .product-card__price {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--deep);
+    }
+    .product-card__price s {
+      color: var(--mid);
+      font-weight: 300;
+      margin-left: 8px;
+      font-size: .82rem;
+    }
+
+    /* ── Banner ─────────────────────────────────────────────────── */
+    .banner {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .banner__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(43,31,26,.9) 0%, rgba(43,31,26,.4) 100%),
+        url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1400&q=80&auto=format&fit=crop') center/cover no-repeat;
+    }
+
+    .banner__content {
+      position: relative;
+      padding: 60px 24px;
+      max-width: 560px;
+    }
+
+    .banner__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .banner__title em { font-style: italic; color: var(--blush); }
+
+    .banner__text {
+      color: rgba(255,255,255,.78);
+      margin-bottom: 36px;
+      font-size: .95rem;
+    }
+
+    /* ── USPs ───────────────────────────────────────────────────── */
+    .usps {
+      padding: 72px 0;
+      background: var(--cream);
+      border-top: 1px solid rgba(43,31,26,.07);
+      border-bottom: 1px solid rgba(43,31,26,.07);
+    }
+
+    .usps__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .usp__icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .usp__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .usp__text {
+      font-size: .82rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    /* ── About ──────────────────────────────────────────────────── */
+    .about { padding: 110px 0; }
+
+    .about__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about__img-wrap {
+      position: relative;
+    }
+
+    .about__img-wrap img {
+      border-radius: var(--radius);
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .about__img-accent {
+      position: absolute;
+      bottom: -28px;
+      right: -28px;
+      width: 180px;
+      height: 180px;
+      border-radius: var(--radius);
+      border: 12px solid var(--cream);
+      overflow: hidden;
+    }
+
+    .about__text { padding-top: 20px; }
+
+    .about__text p {
+      color: var(--mid);
+      margin-bottom: 20px;
+      font-size: .95rem;
+    }
+
+    .about__stats {
+      display: flex;
+      gap: 40px;
+      margin: 40px 0;
+      padding: 32px 0;
+      border-top: 1px solid rgba(43,31,26,.1);
+      border-bottom: 1px solid rgba(43,31,26,.1);
+    }
+
+    .stat__num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--rose);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat__label {
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* ── Newsletter ─────────────────────────────────────────────── */
+    .newsletter {
+      padding: 100px 0;
+      background: var(--deep);
+      text-align: center;
+    }
+
+    .newsletter .section-tag { color: var(--gold); }
+
+    .newsletter .section-title { color: var(--white); margin-bottom: 16px; }
+
+    .newsletter__sub {
+      color: rgba(255,255,255,.65);
+      margin-bottom: 44px;
+      font-size: .95rem;
+    }
+
+    .newsletter__form {
+      display: flex;
+      max-width: 480px;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    .newsletter__input {
+      flex: 1;
+      padding: 15px 20px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.07);
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: .9rem;
+      border-radius: var(--radius) 0 0 var(--radius);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .newsletter__input::placeholder { color: rgba(255,255,255,.4); }
+    .newsletter__input:focus { border-color: var(--gold); }
+
+    .newsletter__form .btn {
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 15px 28px;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────── */
+    footer {
+      background: #1a1210;
+      color: rgba(255,255,255,.55);
+      padding: 72px 0 0;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .footer__brand .nav__logo { color: var(--white); }
+
+    .footer__tagline {
+      font-size: .85rem;
+      line-height: 1.7;
+      margin: 16px 0 28px;
+    }
+
+    .footer__social { display: flex; gap: 14px; }
+
+    .footer__social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      font-size: .85rem;
+      transition: all .2s;
+    }
+    .footer__social a:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer__heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .footer__links { list-style: none; }
+    .footer__links li { margin-bottom: 10px; }
+    .footer__links a {
+      font-size: .83rem;
+      transition: color .2s;
+    }
+    .footer__links a:hover { color: var(--gold); }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      font-size: .75rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__bottom-links { display: flex; gap: 24px; }
+    .footer__bottom-links a { transition: color .2s; }
+    .footer__bottom-links a:hover { color: var(--gold); }
+
+    /* ── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .products__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .categories__grid { grid-template-columns: 1fr; }
+      .about__inner { grid-template-columns: 1fr; gap: 40px; }
+      .about__img-accent { display: none; }
+      .usps__grid { grid-template-columns: 1fr 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .newsletter__form { flex-direction: column; }
+      .newsletter__input,
+      .newsletter__form .btn { border-radius: var(--radius); }
+    }
+
+    @media (max-width: 480px) {
+      .products__grid { grid-template-columns: 1fr; }
+      .usps__grid { grid-template-columns: 1fr; }
+      .hero__cta { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    Fri frakt på beställningar över 599 kr &nbsp;·&nbsp; Gratis retur inom 30 dagar &nbsp;·&nbsp; Säker betalning
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo">Belle Martineé<span>.</span></a>
+
+        <ul class="nav__links">
+          <li><a href="#kategorier">Kategorier</a></li>
+          <li><a href="#nyheter">Nyheter</a></li>
+          <li><a href="#erbjudanden">Erbjudanden</a></li>
+          <li><a href="#om-oss">Om oss</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <!-- Search -->
+          <button class="nav__icon-btn" aria-label="Sök">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <!-- Wishlist -->
+          <button class="nav__icon-btn" aria-label="Önskelista">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <!-- Cart -->
+          <button class="nav__icon-btn" aria-label="Varukorg">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path stroke-linecap="round" d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="cart-badge">3</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Sommarkollektion 2026</p>
+        <h1 class="hero__title">Mode med <em>elegans</em> &amp; känsla</h1>
+        <p class="hero__sub">Utforska vår noggrant utvalda kollektion av kläder, accessoarer och skönhetsprodukter – skapta för dig som värdesätter stil.</p>
+        <div class="hero__cta">
+          <a href="#nyheter" class="btn btn-light">Shoppa nu</a>
+          <a href="#om-oss" class="btn btn-outline" style="color:var(--white);border-color:rgba(255,255,255,.5)">Om oss</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Fri frakt från 599 kr</span>
+      <span>Nyheter varje vecka</span>
+      <span>Gratis retur</span>
+      <span>Säker checkout</span>
+      <span>Exklusiva märken</span>
+      <span>Klarna &amp; Swish</span>
+      <span>Fri frakt från 599 kr</span>
+      <span>Nyheter varje vecka</span>
+      <span>Gratis retur</span>
+      <span>Säker checkout</span>
+      <span>Exklusiva märken</span>
+      <span>Klarna &amp; Swish</span>
+    </div>
+  </div>
+
+  <!-- Categories -->
+  <section class="categories" id="kategorier">
+    <div class="container">
+      <div class="categories__header">
+        <span class="section-tag">Utforska</span>
+        <h2 class="section-title">Handla efter kategori</h2>
+      </div>
+      <div class="categories__grid">
+
+        <div class="cat-card">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80&auto=format&fit=crop" alt="Kläder" loading="lazy" />
+          <div class="cat-card__body">
+            <p class="cat-card__label">Kollektion</p>
+            <h3 class="cat-card__name">Kläder</h3>
+            <a href="#" class="btn btn-light" style="font-size:.72rem;padding:10px 24px">Utforska</a>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80&auto=format&fit=crop" alt="Väskor &amp; Accessoarer" loading="lazy" />
+          <div class="cat-card__body">
+            <p class="cat-card__label">Must-have</p>
+            <h3 class="cat-card__name">Väskor &amp; Accessoarer</h3>
+            <a href="#" class="btn btn-light" style="font-size:.72rem;padding:10px 24px">Utforska</a>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80&auto=format&fit=crop" alt="Skönhet" loading="lazy" />
+          <div class="cat-card__body">
+            <p class="cat-card__label">Favoriter</p>
+            <h3 class="cat-card__name">Skönhet</h3>
+            <a href="#" class="btn btn-light" style="font-size:.72rem;padding:10px 24px">Utforska</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured products -->
+  <section class="featured" id="nyheter">
+    <div class="container">
+      <div class="featured__header">
+        <div>
+          <span class="section-tag">Nyheter</span>
+          <h2 class="section-title">Utvalda produkter</h2>
+        </div>
+        <a href="#" class="btn btn-outline">Visa alla</a>
+      </div>
+      <div class="products__grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80&auto=format&fit=crop" alt="Silkesklänning" loading="lazy" />
+            <span class="product-card__badge">Nyhet</span>
+            <button class="product-card__wish" aria-label="Spara till önskelista">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <div class="product-card__quick">
+              <a href="#" class="btn btn-primary">Lägg i varukorg</a>
+            </div>
+          </div>
+          <p class="product-card__brand">Belle Martineé</p>
+          <h3 class="product-card__name">Silkesklänning Lumière</h3>
+          <p class="product-card__price">1 299 kr</p>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=600&q=80&auto=format&fit=crop" alt="Blommig blus" loading="lazy" />
+            <button class="product-card__wish" aria-label="Spara till önskelista">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <div class="product-card__quick">
+              <a href="#" class="btn btn-primary">Lägg i varukorg</a>
+            </div>
+          </div>
+          <p class="product-card__brand">Belle Martineé</p>
+          <h3 class="product-card__name">Blommig Blus Jardin</h3>
+          <p class="product-card__price">649 kr <s>849 kr</s></p>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80&auto=format&fit=crop" alt="Läderhandväska" loading="lazy" />
+            <span class="product-card__badge">Bestseller</span>
+            <button class="product-card__wish" aria-label="Spara till önskelista">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <div class="product-card__quick">
+              <a href="#" class="btn btn-primary">Lägg i varukorg</a>
+            </div>
+          </div>
+          <p class="product-card__brand">Belle Martineé</p>
+          <h3 class="product-card__name">Läderväska Élégance</h3>
+          <p class="product-card__price">2 199 kr</p>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600&q=80&auto=format&fit=crop" alt="Sommarklänning" loading="lazy" />
+            <button class="product-card__wish" aria-label="Spara till önskelista">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <div class="product-card__quick">
+              <a href="#" class="btn btn-primary">Lägg i varukorg</a>
+            </div>
+          </div>
+          <p class="product-card__brand">Belle Martineé</p>
+          <h3 class="product-card__name">Sommarklänning Soleil</h3>
+          <p class="product-card__price">899 kr</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo banner -->
+  <section class="banner" id="erbjudanden">
+    <div class="banner__bg"></div>
+    <div class="container">
+      <div class="banner__content">
+        <span class="section-tag">Exklusivt erbjudande</span>
+        <h2 class="banner__title">Upp till <em>40% rabatt</em> på sommarens favoriter</h2>
+        <p class="banner__text">Passa på – begränsat antal kvar i lager. Erbjudandet gäller t.o.m. 30 april 2026.</p>
+        <a href="#" class="btn btn-light">Shoppa REA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- USPs -->
+  <section class="usps">
+    <div class="container">
+      <div class="usps__grid">
+        <div class="usp">
+          <div class="usp__icon">🚚</div>
+          <h3 class="usp__title">Fri frakt</h3>
+          <p class="usp__text">Gratis leverans på alla beställningar över 599 kr inom Sverige.</p>
+        </div>
+        <div class="usp">
+          <div class="usp__icon">↩️</div>
+          <h3 class="usp__title">Gratis retur</h3>
+          <p class="usp__text">30 dagars öppet köp. Enkel och kostnadsfri retur.</p>
+        </div>
+        <div class="usp">
+          <div class="usp__icon">🔒</div>
+          <h3 class="usp__title">Säker betalning</h3>
+          <p class="usp__text">Betala med Klarna, Swish, kort eller faktura – alltid säkert.</p>
+        </div>
+        <div class="usp">
+          <div class="usp__icon">💬</div>
+          <h3 class="usp__title">Kundservice</h3>
+          <p class="usp__text">Vänlig support måndag–fredag 09–17. Vi hjälper dig gärna!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="om-oss">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__img-wrap">
+          <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=800&q=80&auto=format&fit=crop" alt="Om Belle Martineé" loading="lazy" />
+          <div class="about__img-accent">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop" alt="Detalj" loading="lazy" />
+          </div>
+        </div>
+        <div class="about__text">
+          <span class="section-tag">Vår historia</span>
+          <h2 class="section-title">Mode med hjärta &amp; hantverksskicklighet</h2>
+          <div class="about__stats">
+            <div>
+              <p class="stat__num">8+</p>
+              <p class="stat__label">Års erfarenhet</p>
+            </div>
+            <div>
+              <p class="stat__num">12k</p>
+              <p class="stat__label">Nöjda kunder</p>
+            </div>
+            <div>
+              <p class="stat__num">500+</p>
+              <p class="stat__label">Unika produkter</p>
+            </div>
+          </div>
+          <p>Belle Martineé grundades med en enkel vision: att erbjuda tidlöst mode av hög kvalitet till alla kvinnor. Varje plagg och accessoar väljs ut med omsorg för att du alltid ska känna dig vacker och trygg.</p>
+          <p>Vi samarbetar med hållbara varumärken och leverantörer som delar våra värderingar kring etisk produktion och miljömedvetenhet.</p>
+          <a href="#" class="btn btn-primary" style="margin-top:8px">Läs mer om oss</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="kontakt">
+    <div class="container">
+      <span class="section-tag">Håll dig uppdaterad</span>
+      <h2 class="section-title">Prenumerera på vårt nyhetsbrev</h2>
+      <p class="newsletter__sub">Få exklusiva erbjudanden, nyheter och stilinspiration direkt i din inkorg. Vi lovar att inte skicka skräppost.</p>
+      <form class="newsletter__form" onsubmit="handleNewsletter(event)">
+        <input class="newsletter__input" type="email" placeholder="Din e-postadress" required aria-label="E-postadress" />
+        <button type="submit" class="btn btn-primary">Prenumerera</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontakt-footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <a href="#" class="nav__logo">Belle Martineé<span style="color:var(--rose);font-style:italic">.</span></a>
+          <p class="footer__tagline">Exklusiv svensk e-handel med passion för mode, skönhet och livsstil. Vi levererar elegans direkt till din dörr.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">Ig</a>
+            <a href="#" aria-label="Facebook">Fb</a>
+            <a href="#" aria-label="Pinterest">Pi</a>
+            <a href="#" aria-label="TikTok">Tk</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Kundservice</h4>
+          <ul class="footer__links">
+            <li><a href="#">Kontakta oss</a></li>
+            <li><a href="#">Vanliga frågor</a></li>
+            <li><a href="#">Leverans &amp; retur</a></li>
+            <li><a href="#">Betalningsalternativ</a></li>
+            <li><a href="#">Storleksguide</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Kategorier</h4>
+          <ul class="footer__links">
+            <li><a href="#">Kläder</a></li>
+            <li><a href="#">Väskor</a></li>
+            <li><a href="#">Skor</a></li>
+            <li><a href="#">Skönhet</a></li>
+            <li><a href="#">Accessoarer</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Om Belle Martineé</h4>
+          <ul class="footer__links">
+            <li><a href="#">Om oss</a></li>
+            <li><a href="#">Hållbarhet</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Karriär</a></li>
+            <li><a href="#">Affiliate</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Belle Martineé. Alla rättigheter förbehållna.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Integritetspolicy</a>
+          <a href="#">Cookiepolicy</a>
+          <a href="#">Allmänna villkor</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const btn   = e.target.querySelector('button');
+      btn.textContent  = 'Tack! ✓';
+      btn.style.background = '#c9a96e';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = 'Prenumerera';
+        btn.style.background = '';
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
