@@ -706,6 +706,54 @@
       .usps__grid { grid-template-columns: 1fr; }
       .hero__cta { flex-direction: column; }
     }
+
+    /* ── Cookie consent banner ──────────────────────────────────── */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--deep);
+      color: rgba(255,255,255,.85);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 24px rgba(0,0,0,.2);
+      transform: translateY(0);
+      transition: transform .4s ease;
+    }
+    .cookie-banner.hidden { transform: translateY(110%); pointer-events: none; }
+
+    .cookie-banner__text {
+      flex: 1;
+      min-width: 220px;
+      font-size: .83rem;
+      line-height: 1.6;
+    }
+    .cookie-banner__text strong { color: var(--white); font-weight: 500; }
+    .cookie-banner__text a { color: var(--gold); text-decoration: underline; }
+
+    .cookie-banner__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .cookie-btn {
+      padding: 10px 22px;
+      font-family: 'Jost', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+    }
+    .cookie-btn--accept { background: var(--gold); color: var(--deep); }
+    .cookie-btn--accept:hover { background: #d4b87a; }
+    .cookie-btn--decline { background: transparent; color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.25); }
+    .cookie-btn--decline:hover { border-color: rgba(255,255,255,.6); color: var(--white); }
   </style>
 </head>
 <body>
@@ -1047,13 +1095,27 @@
       <div class="footer__bottom">
         <p>© 2026 Belle Martineé. Alla rättigheter förbehållna.</p>
         <div class="footer__bottom-links">
-          <a href="#">Integritetspolicy</a>
-          <a href="#">Cookiepolicy</a>
+          <a href="integritetspolicy.html">Integritetspolicy</a>
+          <a href="cookiepolicy.html">Cookiepolicy</a>
           <a href="#">Allmänna villkor</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Cookie consent banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookiemeddelande">
+    <p class="cookie-banner__text">
+      <strong>Vi använder cookies</strong> för att förbättra din upplevelse, analysera trafik och visa relevant innehåll.
+      Genom att klicka "Acceptera" samtycker du till vår
+      <a href="cookiepolicy.html">cookiepolicy</a> och
+      <a href="integritetspolicy.html">integritetspolicy</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-btn cookie-btn--accept" onclick="setCookieConsent('accepted')">Acceptera alla</button>
+      <button class="cookie-btn cookie-btn--decline" onclick="setCookieConsent('declined')">Endast nödvändiga</button>
+    </div>
+  </div>
 
   <script>
     function handleNewsletter(e) {
@@ -1067,6 +1129,19 @@
         btn.textContent = 'Prenumerera';
         btn.style.background = '';
       }, 3000);
+    }
+
+    // Cookie consent
+    (function () {
+      const consent = localStorage.getItem('bm_cookie_consent');
+      if (consent) {
+        document.getElementById('cookieBanner').classList.add('hidden');
+      }
+    })();
+
+    function setCookieConsent(value) {
+      localStorage.setItem('bm_cookie_consent', value);
+      document.getElementById('cookieBanner').classList.add('hidden');
     }
   </script>
 

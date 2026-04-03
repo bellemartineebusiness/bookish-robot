@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookiepolicy | Belle Martineé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f2;
+      --blush: #e8c9b8;
+      --rose:  #c4796a;
+      --deep:  #2b1f1a;
+      --mid:   #7a5c54;
+      --gold:  #c9a96e;
+      --white: #ffffff;
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--deep);
+      line-height: 1.8;
+    }
+
+    a { color: var(--rose); text-decoration: underline; }
+    a:hover { color: var(--gold); }
+
+    /* Navigation */
+    .nav {
+      background: rgba(250,247,242,.97);
+      border-bottom: 1px solid rgba(43,31,26,.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: .06em;
+      color: var(--deep);
+      text-decoration: none;
+    }
+    .nav__logo span { color: var(--rose); font-style: italic; }
+    .nav__back {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav__back:hover { color: var(--rose); }
+
+    /* Hero */
+    .page-hero {
+      background: var(--deep);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .page-hero__eyebrow {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .page-hero__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .page-hero__sub {
+      color: rgba(255,255,255,.6);
+      font-size: .85rem;
+    }
+
+    /* Content */
+    .policy-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 24px 100px;
+    }
+
+    .policy-wrap h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--deep);
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(43,31,26,.1);
+    }
+
+    .policy-wrap h3 {
+      font-family: 'Jost', sans-serif;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin: 28px 0 10px;
+    }
+
+    .policy-wrap p {
+      font-size: .93rem;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .policy-wrap ul {
+      list-style: none;
+      margin-bottom: 16px;
+      padding-left: 0;
+    }
+    .policy-wrap ul li {
+      font-size: .93rem;
+      color: var(--mid);
+      padding: 6px 0 6px 22px;
+      position: relative;
+    }
+    .policy-wrap ul li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: .6rem;
+      top: 10px;
+    }
+
+    .policy-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: .88rem;
+    }
+    .policy-wrap table th {
+      background: var(--deep);
+      color: var(--white);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 500;
+      letter-spacing: .05em;
+    }
+    .policy-wrap table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(43,31,26,.08);
+      color: var(--mid);
+      vertical-align: top;
+    }
+    .policy-wrap table tr:nth-child(even) td { background: rgba(43,31,26,.03); }
+
+    .info-box {
+      background: rgba(201,169,110,.1);
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 24px;
+    }
+    .info-box p { color: var(--deep); margin-bottom: 0; font-size: .88rem; }
+
+    .updated {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--deep);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    /* Cookie category cards */
+    .cookie-type {
+      background: var(--white);
+      border: 1px solid rgba(43,31,26,.1);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .cookie-type__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .cookie-type__icon { font-size: 1.4rem; }
+    .cookie-type__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--deep);
+    }
+    .cookie-type__required {
+      margin-left: auto;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--blush);
+      color: var(--deep);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .cookie-type__optional {
+      margin-left: auto;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(196,121,106,.15);
+      color: var(--rose);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .cookie-type p {
+      font-size: .88rem;
+      margin-bottom: 0;
+    }
+
+    /* Consent controls */
+    .consent-controls {
+      background: var(--deep);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 40px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .consent-controls p {
+      color: rgba(255,255,255,.75);
+      font-size: .88rem;
+      margin-bottom: 0;
+      max-width: 400px;
+    }
+    .consent-controls p strong { color: var(--white); }
+    .consent-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cbtn {
+      padding: 10px 22px;
+      font-family: 'Jost', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+    }
+    .cbtn--accept { background: var(--gold); color: var(--deep); }
+    .cbtn--accept:hover { background: #d4b87a; }
+    .cbtn--decline { background: transparent; color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.25); }
+    .cbtn--decline:hover { border-color: rgba(255,255,255,.6); color: var(--white); }
+    .consent-status {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 8px;
+    }
+
+    /* Footer */
+    .page-footer {
+      background: #1a1210;
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: .78rem;
+    }
+    .page-footer a { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Belle Martineé<span>.</span></a>
+      <a href="index.html" class="nav__back">← Tillbaka till butiken</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <p class="page-hero__eyebrow">Juridisk information</p>
+    <h1 class="page-hero__title">Cookiepolicy</h1>
+    <p class="page-hero__sub">Senast uppdaterad: 3 april 2026</p>
+  </div>
+
+  <div class="policy-wrap">
+    <span class="updated">Gäller från 3 april 2026</span>
+
+    <div class="info-box">
+      <p>Den här sidan förklarar vad cookies är, vilka cookies vi använder på bellemartinee.se och hur du kan hantera dina inställningar. Vi följer EU:s e-dataskyddsdirektiv och GDPR.</p>
+    </div>
+
+    <h2>1. Vad är cookies?</h2>
+    <p>Cookies är små textfiler som sparas i din webbläsare när du besöker en webbplats. De används för att webbplatsen ska fungera korrekt, komma ihåg dina preferenser och samla in statistik om användningen.</p>
+    <p>Cookies kan vara <strong>sessionscookies</strong> (raderas när du stänger webbläsaren) eller <strong>permanenta cookies</strong> (ligger kvar under en definierad tid). De kan placeras av oss (förstapartscookies) eller av tredjepartstjänster vi använder (tredjepartscookies).</p>
+
+    <h2>2. Vilka cookies använder vi?</h2>
+
+    <div class="cookie-type">
+      <div class="cookie-type__header">
+        <span class="cookie-type__icon">🔒</span>
+        <span class="cookie-type__name">Nödvändiga cookies</span>
+        <span class="cookie-type__required">Alltid aktiva</span>
+      </div>
+      <p>Dessa cookies är nödvändiga för att webbplatsen ska fungera och kan inte stängas av. De används t.ex. för att komma ihåg din varukorg, hålla din inloggningssession aktiv och hantera ditt cookiesamtycke.</p>
+    </div>
+
+    <div class="cookie-type">
+      <div class="cookie-type__header">
+        <span class="cookie-type__icon">📊</span>
+        <span class="cookie-type__name">Analyticscookies</span>
+        <span class="cookie-type__optional">Valfria</span>
+      </div>
+      <p>Dessa cookies hjälper oss förstå hur besökare interagerar med webbplatsen (vilka sidor som besöks, hur länge, varifrån trafiken kommer). Vi använder Google Analytics med anonymiserad IP. Informationen är aggregerad och anonym.</p>
+    </div>
+
+    <div class="cookie-type">
+      <div class="cookie-type__header">
+        <span class="cookie-type__icon">🎯</span>
+        <span class="cookie-type__name">Marknadsföringscookies</span>
+        <span class="cookie-type__optional">Valfria</span>
+      </div>
+      <p>Dessa cookies används för att visa relevanta annonser och mäta deras effektivitet. De kan delas med våra annonseringspartners (t.ex. Meta Pixel, Google Ads).</p>
+    </div>
+
+    <div class="cookie-type">
+      <div class="cookie-type__header">
+        <span class="cookie-type__icon">⚙️</span>
+        <span class="cookie-type__name">Funktionscookies</span>
+        <span class="cookie-type__optional">Valfria</span>
+      </div>
+      <p>Dessa cookies möjliggör förbättrad funktionalitet och personalisering, som att komma ihåg språkinställningar, storleksguide-val och önskelista.</p>
+    </div>
+
+    <h2>3. Detaljlista över cookies</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Cookie</th>
+          <th>Typ</th>
+          <th>Syfte</th>
+          <th>Giltighetstid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>bm_cookie_consent</td>
+          <td>Nödvändig</td>
+          <td>Sparar ditt cookiesamtycke</td>
+          <td>1 år</td>
+        </tr>
+        <tr>
+          <td>bm_session</td>
+          <td>Nödvändig</td>
+          <td>Håller din inloggningssession aktiv</td>
+          <td>Session</td>
+        </tr>
+        <tr>
+          <td>bm_cart</td>
+          <td>Nödvändig</td>
+          <td>Sparar innehållet i din varukorg</td>
+          <td>30 dagar</td>
+        </tr>
+        <tr>
+          <td>_ga</td>
+          <td>Analytics</td>
+          <td>Google Analytics – unikt besökar-ID</td>
+          <td>2 år</td>
+        </tr>
+        <tr>
+          <td>_ga_XXXXXXX</td>
+          <td>Analytics</td>
+          <td>Google Analytics – sessionstillstånd</td>
+          <td>2 år</td>
+        </tr>
+        <tr>
+          <td>_fbp</td>
+          <td>Marknadsföring</td>
+          <td>Meta Pixel – spårar konverteringar</td>
+          <td>90 dagar</td>
+        </tr>
+        <tr>
+          <td>_gcl_au</td>
+          <td>Marknadsföring</td>
+          <td>Google Ads – konverteringsmätning</td>
+          <td>90 dagar</td>
+        </tr>
+        <tr>
+          <td>bm_wishlist</td>
+          <td>Funktion</td>
+          <td>Sparar din önskelista lokalt</td>
+          <td>90 dagar</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. Hantera ditt samtycke</h2>
+    <p>Du kan när som helst ändra eller återkalla ditt samtycke till cookies nedan. Nödvändiga cookies kan inte avaktiveras eftersom de är kritiska för att webbplatsen ska fungera.</p>
+
+    <div class="consent-controls" id="consentControls">
+      <div>
+        <p><strong>Ditt nuvarande val:</strong> Ändra dina cookie-inställningar här.</p>
+        <p class="consent-status" id="consentStatus"></p>
+      </div>
+      <div class="consent-btns">
+        <button class="cbtn cbtn--accept" onclick="updateConsent('accepted')">Acceptera alla</button>
+        <button class="cbtn cbtn--decline" onclick="updateConsent('declined')">Endast nödvändiga</button>
+      </div>
+    </div>
+
+    <h2>5. Hantera cookies i din webbläsare</h2>
+    <p>Du kan också hantera cookies direkt i din webbläsare. Observera att om du blockerar alla cookies kan vissa delar av webbplatsen sluta fungera.</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/sv/kb/kakor-information-webbplatser-lagrar-din-dator" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/sv-se/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Apple Safari</a></li>
+      <li><a href="https://support.microsoft.com/sv-se/windows/ta-bort-och-hantera-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+    </ul>
+
+    <h2>6. Tredjepartstjänster</h2>
+    <p>Vi använder tjänster från tredje part som kan placera egna cookies. Dessa parters egna integritetspolicyer gäller för deras cookies:</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google – Integritetspolicy</a></li>
+      <li><a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta – Integritetspolicy</a></li>
+      <li><a href="https://www.klarna.com/se/integritetspolicy/" target="_blank" rel="noopener noreferrer">Klarna – Integritetspolicy</a></li>
+    </ul>
+
+    <h2>7. Ändringar av denna policy</h2>
+    <p>Vi kan uppdatera denna cookiepolicy när vi inför nya cookies eller ändrar hur befintliga cookies används. Datumet för senaste ändring visas alltid överst på sidan.</p>
+
+    <h2>8. Kontakt</h2>
+    <p>Har du frågor om vår användning av cookies? Kontakta oss:</p>
+    <ul>
+      <li>E-post: <a href="mailto:integritet@bellemartinee.se">integritet@bellemartinee.se</a></li>
+      <li>Läs vår <a href="integritetspolicy.html">integritetspolicy</a> för mer information om hur vi behandlar dina personuppgifter.</li>
+    </ul>
+  </div>
+
+  <footer class="page-footer">
+    <p>© 2026 Belle Martineé. Alla rättigheter förbehållna. &nbsp;|&nbsp;
+      <a href="integritetspolicy.html">Integritetspolicy</a> &nbsp;|&nbsp;
+      <a href="index.html">Tillbaka till butiken</a>
+    </p>
+  </footer>
+
+  <script>
+    (function () {
+      const consent = localStorage.getItem('bm_cookie_consent');
+      const el = document.getElementById('consentStatus');
+      if (el) {
+        if (consent === 'accepted') el.textContent = 'Nuvarande val: Acceptera alla ✓';
+        else if (consent === 'declined') el.textContent = 'Nuvarande val: Endast nödvändiga ✓';
+        else el.textContent = 'Inget val sparat ännu';
+      }
+    })();
+
+    function updateConsent(value) {
+      localStorage.setItem('bm_cookie_consent', value);
+      const el = document.getElementById('consentStatus');
+      if (el) {
+        el.textContent = value === 'accepted'
+          ? 'Nuvarande val: Acceptera alla ✓'
+          : 'Nuvarande val: Endast nödvändiga ✓';
+      }
+    }
+  </script>
+
+</body>
+</html>
